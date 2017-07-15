@@ -242,7 +242,7 @@ newtype DigestCtx  = DigestCtx (ForeignPtr EVP_MD_CTX)
 data    EVP_MD_CTX
 
 
-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
 foreign import ccall unsafe "EVP_MD_CTX_new"
   _md_ctx_new :: IO (Ptr EVP_MD_CTX)
 foreign import ccall unsafe "EVP_MD_CTX_reset"
